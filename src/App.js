@@ -1,7 +1,10 @@
+import React from "react";
+import { AboutUs } from "./pages/AboutUs";
+
 export const App = () => {
   return (
     <div className="App">
-      <h1>Hello Stu</h1>
+      <AboutUs />
     </div>
   );
 };
