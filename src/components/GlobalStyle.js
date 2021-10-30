@@ -7,9 +7,11 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing:border-box
 }
 
-body {
+html, body {
     background: #1b1b1b;
     font-family: 'Inter', sans-serif;
+    overflow-x:hidden;
+    position:relative;
 }
 
 button {
@@ -39,6 +41,7 @@ h3 {
 
 h4 {
     font-weight:bold;
+    font-size:2rem
 }
 
 a {
