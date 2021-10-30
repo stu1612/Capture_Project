@@ -3,6 +3,9 @@ import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 import { MovieState } from "../Data/movies";
 import { Award } from "../components/Award";
+//Animations
+import { motion } from "framer-motion";
+import { pageAnim } from "../animation/animation";
 
 export const MovieDetail = () => {
   const history = useHistory();
@@ -20,7 +23,12 @@ export const MovieDetail = () => {
   return (
     <>
       {movie && (
-        <StyledDetails>
+        <StyledDetails
+          exit="exit"
+          variants={pageAnim}
+          initial="hidden"
+          animate="show"
+        >
           <StyledHeadline>
             <h2>{movie.title}</h2>
             <img src={movie.mainImg} alt={movie.title} />
@@ -43,7 +51,7 @@ export const MovieDetail = () => {
   );
 };
 
-const StyledDetails = styled.div`
+const StyledDetails = styled(motion.div)`
   color: white;
 `;
 const StyledHeadline = styled.div`

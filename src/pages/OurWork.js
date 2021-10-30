@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+// Animations
+import { motion } from "framer-motion";
+import { pageAnim } from "../animation/animation";
 
 import { MovieState } from "../Data/movies";
 
@@ -12,9 +15,14 @@ export const OurWork = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Ourwork</h1>
-      <StyledWork>
+    <>
+      <StyledWork
+        style={{ background: "#fff" }}
+        exit="exit"
+        variants={pageAnim}
+        initial="hidden"
+        animate="show"
+      >
         {data.map((movie) => (
           <StyledMovie key={movie.id}>
             <h2>{movie.title}</h2>
@@ -25,11 +33,11 @@ export const OurWork = () => {
           </StyledMovie>
         ))}
       </StyledWork>
-    </div>
+    </>
   );
 };
 
-const StyledWork = styled.div`
+const StyledWork = styled(motion.div)`
   min-height: 100vh;
   overflow: hidden;
   padding: 5rem 10rem;
