@@ -14,8 +14,7 @@ export const Card = ({ img, title, description }) => {
 };
 
 const StyledCard = styled.div`
-  flex-basis: 5rem;
-  padding-right: 1rem;
+  flex-basis: 20rem;
   .icon {
     display: flex;
     align-items: center;
