@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 // Animations
@@ -11,16 +11,15 @@ import {
   slider,
   sliderContainer,
 } from "../animation/animation";
-
-import { MovieState } from "../Data/movies";
+import athlete from "../assets/images/athlete-small.png";
+import goodtimes from "../assets/images/goodtimes-small.png";
+import theracer from "../assets/images/theracer-small.png";
+import { useScroll } from "../components/useScroll";
+import { ScrollTop } from "../components/ScrollTop";
 
 export const OurWork = () => {
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    setData(MovieState);
-  }, []);
-
+  const [element, controls] = useScroll();
+  const [element2, controls2] = useScroll();
   return (
     <StyledWork
       style={{ background: "#fff" }}
@@ -29,30 +28,48 @@ export const OurWork = () => {
       initial="hidden"
       animate="show"
     >
-      {/* frame animations */}
       <motion.div variants={sliderContainer}>
         <Frame1 variants={slider}></Frame1>
         <Frame2 variants={slider}></Frame2>
         <Frame3 variants={slider}></Frame3>
         <Frame4 variants={slider}></Frame4>
       </motion.div>
-      {/* frame animations */}
+      <StyledMovie>
+        <motion.h2 variants={fade}>The Athlete</motion.h2>
+        <motion.div variants={lineAnim} className="line"></motion.div>
+        <Link to="/work/the-athlete">
+          <Hide>
+            <motion.img variants={photoAnim} src={athlete} alt="athlete" />
+          </Hide>
+        </Link>
+      </StyledMovie>
 
-      {data.map((movie) => (
-        <StyledMovie key={movie.id}>
-          <motion.h2 variants={fade}>{movie.title}</motion.h2>
-          <motion.div variants={lineAnim} className="line"></motion.div>
-          <Link to={movie.url}>
-            <Hide>
-              <motion.img
-                variants={photoAnim}
-                src={movie.mainImg}
-                alt={movie.title}
-              />
-            </Hide>
-          </Link>
-        </StyledMovie>
-      ))}
+      <StyledMovie
+        ref={element}
+        variants={fade}
+        animate={controls}
+        initial="hidden"
+      >
+        <h2>The Racer</h2>
+        <motion.div variants={lineAnim} className="line"></motion.div>
+        <Link to="/work/the-racer">
+          <img src={theracer} alt="theracer" />
+        </Link>
+      </StyledMovie>
+
+      <StyledMovie
+        ref={element2}
+        variants={fade}
+        animate={controls2}
+        initial="hidden"
+      >
+        <h2>Good Times</h2>
+        <motion.div variants={lineAnim} className="line"></motion.div>
+        <Link to="/work/good-times">
+          <img src={goodtimes} alt="goodtimes" />
+        </Link>
+      </StyledMovie>
+      <ScrollTop />
     </StyledWork>
   );
 };

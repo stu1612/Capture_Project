@@ -7,10 +7,14 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing:border-box
 }
 
-html, body {
+html {
+    font-size:75%
+}
+
+body {
     background: #1b1b1b;
     font-family: 'Inter', sans-serif;
-    /* overflow-x:hidden; */
+    overflow-x:hidden;
     /* position:relative; */
 }
 

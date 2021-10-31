@@ -4,11 +4,19 @@ import home2 from "../assets/images/home2.png";
 import { StyledAbout, StyledDescription, StyledImage } from "../styles";
 import { CardsData } from "../Data/cards";
 import { Card } from "../components/Card";
+import { scrollReveal } from "../animation/animation";
+import { useScroll } from "./useScroll";
 
 export const ServicesSection = () => {
   const [data, setData] = useState(CardsData);
+  const [element, controls] = useScroll();
   return (
-    <StyledServices>
+    <StyledServices
+      ref={element}
+      variants={scrollReveal}
+      animate={controls}
+      initial="hidden"
+    >
       <StyledDescription>
         <h2>
           High <span>quality</span> services
