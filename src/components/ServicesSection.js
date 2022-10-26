@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import home2 from "../assets/images/home2.png";
 import { StyledAbout, StyledDescription, StyledImage } from "../styles";
@@ -8,8 +8,13 @@ import { scrollReveal } from "../animation/animation";
 import { useScroll } from "./useScroll";
 
 export const ServicesSection = () => {
-  const [data, setData] = useState(CardsData);
+  const [data, setData] = useState([]);
   const [element, controls] = useScroll();
+
+  useEffect(() => {
+    setData(CardsData);
+  }, []);
+
   return (
     <StyledServices
       ref={element}

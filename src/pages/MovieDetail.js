@@ -10,8 +10,12 @@ import { pageAnim } from "../animation/animation";
 export const MovieDetail = () => {
   const history = useHistory();
   const url = history.location.pathname;
-  const [movies, setMovies] = useState(MovieState);
+  const [movies, setMovies] = useState([]);
   const [movie, setMovie] = useState(null);
+
+  useEffect(() => {
+    setMovies(MovieState);
+  }, []);
 
   useEffect(() => {
     const currentMovie = movies.filter(
